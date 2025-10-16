@@ -1,37 +1,32 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
-import pickle
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 import numpy as np
-import uvicorn
+import pickle
 
 app = FastAPI()
 
-# Model load
+# Mount static folder for CSS
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+# Load model
 with open("salary_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-html_form = """
-<h2>Salary Prediction</h2>
-<form action="/predict" method="post">
-Age: <input type="number" name="age"><br>
-Gender (0=Female,1=Male): <input type="number" name="gender"><br>
-Education Level (0-3): <input type="number" name="education"><br>
-Job Title (0-5): <input type="number" name="job"><br>
-Years of Experience: <input type="number" name="exp"><br>
-<input type="submit" value="Predict">
-</form>
-"""
-
 @app.get("/", response_class=HTMLResponse)
-def home():
-    return html_form
+def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/predict", response_class=HTMLResponse)
-def predict(age: int = Form(...), gender: int = Form(...), education: int = Form(...),
-            job: int = Form(...), exp: int = Form(...)):
-    features = np.array([[age, gender, education, job, exp]])
-    prediction = model.predict(features)[0]
-    return f"<h2>Predicted Salary: {round(prediction, 2)}</h2>"
+def predict(request: Request,
+            Age: int = Form(...),
+            Gender: int = Form(...),
+            Education_Level: int = Form(...),
+            Job_Title: int = Form(...),
+            Years_of_Experience: int = Form(...)):
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    X = np.array([[Age, Gender, Education_Level, Job_Title, Years_of_Experience]])
+    prediction = model.predict(X)[0]
+    return templates.TemplateResponse("index.html", {"request": request, "prediction": round(prediction, 2)})

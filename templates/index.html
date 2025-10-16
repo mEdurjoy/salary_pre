@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Salary Prediction</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Salary Prediction</h2>
+        <form action="/predict" method="post">
+            <label>Age:</label>
+            <input type="number" name="Age" required>
+
+            <label>Gender:</label>
+            <select name="Gender" required>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+                <option value="2">Other</option>
+            </select>
+
+            <label>Education Level:</label>
+            <select name="Education_Level" required>
+                <option value="0">Bachelor's</option>
+                <option value="1">Bachelor's Degree</option>
+                <option value="2">High School</option>
+                <option value="3">Master's</option>
+                <option value="4">Master's Degree</option>
+                <option value="5">PhD</option>
+                <option value="6">phD</option>
+            </select>
+
+            <label>Job Title:</label>
+            <select name="Job_Title" required>
+                <option value="0">Account Manager</option>
+<option value="1">Accountant</option>
+<option value="2">Administrative Assistant</option>
+<option value="3">Back end Developer</option>
+<option value="4">Business Analyst</option>
+<option value="5">Business Development Manager</option>
+<option value="6">Business Intelligence Analyst</option>
+<option value="7">CEO</option>
+<option value="8">Chief Data Officer</option>
+<option value="9">Chief Technology Officer</option>
+<option value="10">Content Marketing Manager</option>
+<option value="11">Copywriter</option>
+<option value="12">Creative Director</option>
+<option value="13">Customer Service Manager</option>
+<option value="14">Customer Service Rep</option>
+<option value="15">Customer Service Representative</option>
+<option value="16">Customer Success Manager</option>
+<option value="17">Customer Success Rep</option>
+<option value="18">Data Analyst</option>
+<option value="19">Data Entry Clerk</option>
+<option value="20">Data Scientist</option>
+<option value="21">Delivery Driver</option>
+<option value="22">Digital Content Producer</option>
+<option value="23">Digital Marketing Manager</option>
+<option value="24">Digital Marketing Specialist</option>
+<option value="25">Director</option>
+<option value="26">Director of Business Development</option>
+<option value="27">Director of Data Science</option>
+<option value="28">Director of Engineering</option>
+<option value="29">Director of Finance</option>
+<option value="30">Director of HR</option>
+<option value="31">Director of Human Capital</option>
+<option value="32">Director of Human Resources</option>
+<option value="33">Director of Marketing</option>
+<option value="34">Director of Operations</option>
+<option value="35">Director of Product Management</option>
+<option value="36">Director of Sales</option>
+<option value="37">Director of Sales and Marketing</option>
+<option value="38">Event Coordinator</option>
+<option value="39">Financial Advisor</option>
+<option value="40">Financial Analyst</option>
+<option value="41">Financial Manager</option>
+<option value="42">Front End Developer</option>
+<option value="43">Front end Developer</option>
+<option value="44">Full Stack Engineer</option>
+<option value="45">Graphic Designer</option>
+<option value="46">HR Generalist</option>
+<option value="47">HR Manager</option>
+<option value="48">Help Desk Analyst</option>
+<option value="49">Human Resources Coordinator</option>
+<option value="50">Human Resources Director</option>
+<option value="51">Human Resources Manager</option>
+<option value="52">IT Manager</option>
+<option value="53">IT Support</option>
+<option value="54">IT Support Specialist</option>
+<option value="55">Junior Account Manager</option>
+<option value="56">Junior Accountant</option>
+<option value="57">Junior Advertising Coordinator</option>
+<option value="58">Junior Business Analyst</option>
+<option value="59">Junior Business Development Associate</option>s
+<option value="60">Junior Business Operations Analyst</option>
+<option value="61">Junior Copywriter</option>
+<option value="62">Junior Customer Support Specialist</option>
+<option value="63">Junior Data Analyst</option>
+<option value="64">Junior Data Scientist</option>
+<option value="65">Junior Designer</option>
+<option value="66">Junior Developer</option>
+<option value="67">Junior Financial Advisor</option>
+<option value="68">Junior Financial Analyst</option>
+<option value="69">Junior HR Coordinator</option>
+<option value="70">Junior HR Generalist</option>
+<option value="71">Junior Marketing Analyst</option>
+<option value="72">Junior Marketing Coordinator</option>
+<option value="73">Junior Marketing Manager</option>
+<option value="74">Junior Marketing Specialist</option>
+<option value="75">Junior Operations Analyst</option>
+<option value="76">Junior Operations Coordinator</option>
+<option value="77">Junior Operations Manager</option>
+<option value="78">Junior Product Manager</option>
+<option value="79">Junior Project Manager</option>
+<option value="80">Junior Recruiter</option>
+<option value="81">Junior Research Scientist</option>
+<option value="82">Junior Sales Associate</option>
+<option value="83">Junior Sales Representative</option>
+<option value="84">Junior Social Media Manager</option>
+<option value="85">Junior Social Media Specialist</option>
+<option value="86">Junior Software Developer</option>
+<option value="87">Junior Software Engineer</option>
+<option value="88">Junior UX Designer</option>
+<option value="89">Junior Web Designer</option>
+<option value="90">Junior Web Developer</option>
+<option value="91">Juniour HR Coordinator</option>
+<option value="92">Juniour HR Generalist</option>
+<option value="93">Marketing Analyst</option>
+<option value="94">Marketing Coordinator</option>
+<option value="95">Marketing Director</option>
+<option value="96">Marketing Manager</option>
+<option value="97">Marketing Specialist</option>
+<option value="98">Network Engineer</option>
+<option value="99">Office Manager</option>
+<option value="100">Operations Analyst</option>
+<option value="101">Operations Director</option>
+<option value="102">Operations Manager</option>
+<option value="103">Principal Engineer</option>
+<option value="104">Principal Scientist</option>
+<option value="105">Product Designer</option>
+<option value="106">Product Manager</option>
+<option value="107">Product Marketing Manager</option>
+<option value="108">Project Engineer</option>
+<option value="109">Project Manager</option>
+<option value="110">Public Relations Manager</option>
+<option value="111">Receptionist</option>
+<option value="112">Recruiter</option>
+<option value="113">Research Director</option>
+<option value="114">Research Scientist</option>
+<option value="115">Sales Associate</option>
+<option value="116">Sales Director</option>
+<option value="117">Sales Executive</option>
+<option value="118">Sales Manager</option>
+<option value="119">Sales Operations Manager</option>
+<option value="120">Sales Representative</option>
+<option value="121">Senior Account Executive</option>
+<option value="122">Senior Account Manager</option>
+<option value="123">Senior Accountant</option>
+<option value="124">Senior Business Analyst</option>
+<option value="125">Senior Business Development Manager</option>
+<option value="126">Senior Consultant</option>
+<option value="127">Senior Data Analyst</option>
+<option value="128">Senior Data Engineer</option>
+<option value="129">Senior Data Scientist</option>
+<option value="130">Senior Engineer</option>
+<option value="131">Senior Financial Advisor</option>
+<option value="132">Senior Financial Analyst</option>
+<option value="133">Senior Financial Manager</option>
+<option value="134">Senior Graphic Designer</option>
+<option value="135">Senior HR Generalist</option>
+<option value="136">Senior HR Manager</option>
+<option value="137">Senior HR Specialist</option>
+<option value="138">Senior Human Resources Coordinator</option>
+<option value="139">Senior Human Resources Manager</option>
+<option value="140">Senior Human Resources Specialist</option>
+<option value="141">Senior IT Consultant</option>
+<option value="142">Senior IT Project Manager</option>
+<option value="143">Senior IT Support Specialist</option>
+<option value="144">Senior Manager</option>
+<option value="145">Senior Marketing Analyst</option>
+<option value="146">Senior Marketing Coordinator</option>
+<option value="147">Senior Marketing Director</option>
+<option value="148">Senior Marketing Manager</option>
+<option value="149">Senior Marketing Specialist</option>
+<option value="150">Senior Operations Analyst</option>
+<option value="151">Senior Operations Coordinator</option>
+<option value="152">Senior Operations Manager</option>
+<option value="153">Senior Product Designer</option>
+<option value="154">Senior Product Development Manager</option>
+<option value="155">Senior Product Manager</option>
+<option value="156">Senior Product Marketing Manager</option>
+<option value="157">Senior Project Coordinator</option>
+<option value="158">Senior Project Engineer</option>
+<option value="159">Senior Project Manager</option>
+<option value="160">Senior Quality Assurance Analyst</option>
+<option value="161">Senior Research Scientist</option>
+<option value="162">Senior Researcher</option>
+<option value="163">Senior Sales Manager</option>
+<option value="164">Senior Sales Representative</option>
+<option value="165">Senior Scientist</option>
+<option value="166">Senior Software Architect</option>
+<option value="167">Senior Software Developer</option>
+<option value="168">Senior Software Engineer</option>
+<option value="169">Senior Training Specialist</option>
+<option value="170">Senior UX Designer</option>
+<option value="171">Social Media Man</option>
+<option value="172">Social Media Manager</option>
+<option value="173">Social Media Specialist</option>
+<option value="174">Software Developer</option>
+<option value="175">Software Engineer</option>
+<option value="176">Software Engineer Manager</option>
+<option value="177">Software Manager</option>
+<option value="178">Software Project Manager</option>
+<option value="179">Strategy Consultant</option>
+<option value="180">Supply Chain Analyst</option>
+<option value="181">Supply Chain Manager</option>
+<option value="182">Technical Recruiter</option>
+<option value="183">Technical Support Specialist</option>
+<option value="184">Technical Writer</option>
+<option value="185">Training Specialist</option>
+<option value="186">UX Designer</option>
+<option value="187">UX Researcher</option>
+<option value="188">VP of Finance</option>
+<option value="189">VP of Operations</option>
+<option value="190">Web Developer</option>
+
+            </select>
+
+            <label>Years of Experience:</label>
+            <input type="number" name="Years_of_Experience" required>
+
+            <button type="submit">Predict Salary</button>
+        </form>
+         <br> <br> 
+        {% if prediction %}
+        <div class="result">
+            Predicted Salary: ${{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
